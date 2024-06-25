@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WQWUfqNZIUMG7a/DbEGONWkOw5j/95VLVGaI/kf+grFs9TC41GzTCEO8EP/2KSfZ0MJ40Qrk6k2OOEYPXSCWww==",
+  "dgSpecHash": "jeg5W0fUnpyICT+OqhN4ko4AbLzsvlWhsa8/az7MpVln4Wdkh8pgeoaQjRn9bfxCjsFMVduGkUC1jT4hHyrsLA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\autologon\\Pictures\\Lista-De-Tarefas-React-Csharp\\API\\API\\API\\API.csproj",
+  "projectFilePath": "C:\\Users\\autologon\\Desktop\\AngeloHervis\\Prova-Csharp-A2\\API\\API\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\autologon\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\autologon\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",

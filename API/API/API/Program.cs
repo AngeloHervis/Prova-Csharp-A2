@@ -3,6 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<AppDataContext>();
+
+builder.Services.AddCors(
+    options =>
+    {
+        options.AddPolicy("AcessoTotal",
+            builder => builder.
+                AllowAnyOrigin().
+                AllowAnyHeader().
+                AllowAnyMethod());
+    }
+);
+
 builder.Services.AddDbContext<AppDataContext>();
 
 var app = builder.Build();
@@ -55,21 +69,47 @@ app.MapPost("/tarefas/cadastrar", ([FromServices] AppDataContext ctx, [FromBody]
 });
 
 //PUT: http://localhost:5000/tarefas/alterar/{id}
-app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, [FromRoute] string id) =>
+app.MapPut("/tarefas/alterar/{id}", ([FromServices] AppDataContext ctx, string id) =>
 {
-    //Implementar a alteração do status da tarefa
+    Tarefa? tarefa = ctx.Tarefas.Find(id);
+    if (tarefa == null)
+    {
+        return Results.NotFound("Tarefa não encontrada");
+    }
+    if (tarefa.Status == "Não iniciada")
+    {
+        tarefa.Status = "Em andamento";
+    }
+    else if (tarefa.Status == "Em andamento")
+    {
+        tarefa.Status = "Concluída";
+    }
+    ctx.SaveChanges();
+    return Results.Ok("Tarefa alterada com sucesso");
 });
 
 //GET: http://localhost:5000/tarefas/naoconcluidas
 app.MapGet("/tarefas/naoconcluidas", ([FromServices] AppDataContext ctx) =>
 {
     //Implementar a listagem de tarefas não concluídas
+    if (ctx.Tarefas.Any(t => t.Status == "Não iniciada" || t.Status == "Em andamento"))
+    {
+        return Results.Ok(ctx.Tarefas.Where(t => t.Status == "Não iniciada" || t.Status == "Em andamento").ToList());
+    }
+    return Results.NotFound("Nenhuma tarefa encontrada");
 });
 
 //GET: http://localhost:5000/tarefas/concluidas
 app.MapGet("/tarefas/concluidas", ([FromServices] AppDataContext ctx) =>
 {
     //Implementar a listagem de tarefas concluídas
+    if (ctx.Tarefas.Any(t => t.Status == "Concluída" || t.Status == "Concluida")) //preservar a acentuação
+    {
+        return Results.Ok(ctx.Tarefas.Where(t => t.Status == "Concluída" || t.Status == "Concluida").ToList());
+    }
+    return Results.NotFound("Nenhuma tarefa encontrada");
 });
 
+
+app.UseCors("AcessoTotal");
 app.Run();

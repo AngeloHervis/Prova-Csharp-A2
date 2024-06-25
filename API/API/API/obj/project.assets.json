@@ -2540,11 +2540,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\autologon\\Pictures\\Lista-De-Tarefas-React-Csharp\\API\\API\\API\\API.csproj",
+      "projectUniqueName": "C:\\Users\\autologon\\Desktop\\AngeloHervis\\Prova-Csharp-A2\\API\\API\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "C:\\Users\\autologon\\Pictures\\Lista-De-Tarefas-React-Csharp\\API\\API\\API\\API.csproj",
+      "projectPath": "C:\\Users\\autologon\\Desktop\\AngeloHervis\\Prova-Csharp-A2\\API\\API\\API\\API.csproj",
       "packagesPath": "C:\\Users\\autologon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\autologon\\Pictures\\Lista-De-Tarefas-React-Csharp\\API\\API\\API\\obj\\",
+      "outputPath": "C:\\Users\\autologon\\Desktop\\AngeloHervis\\Prova-Csharp-A2\\API\\API\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
